@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply font-body text-slate-700 dark:text-slate-100 bg-slate-50 dark:bg-slate-950 transition-colors duration-300;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight;
+  }
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-400 dark:bg-brand-600;
+  }
+  ::selection {
+    @apply bg-brand-500/30 text-brand-900 dark:text-slate-50;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-glass dark:shadow-glass-dark;
+  }
+  .glass-card {
+    @apply glass rounded-3xl;
+  }
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 via-accent-600 to-brand-500 dark:from-brand-300 dark:via-accent-300 dark:to-brand-200;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl font-semibold text-white bg-gradient-to-r from-brand-600 to-accent-600 hover:from-brand-500 hover:to-accent-500 shadow-glow transition-all duration-300 hover:scale-[1.02] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-2xl font-medium border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-300 transition-colors;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-medium border transition-all cursor-pointer select-none;
+  }
+  .chip-active {
+    @apply bg-brand-600 text-white border-brand-600 shadow-glow scale-105;
+  }
+  .chip-idle {
+    @apply bg-white/70 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-brand-400 hover:text-brand-600 dark:hover:text-brand-300;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500 transition-all;
+  }
+  .skeleton {
+    @apply relative overflow-hidden bg-slate-200/70 dark:bg-slate-800/70 rounded-2xl;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/40 dark:via-white/10 to-transparent;
+  }
+  .markdown h1 {
+    @apply text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mt-6 mb-4;
+  }
+  .markdown h2 {
+    @apply text-xl md:text-2xl font-bold text-slate-900 dark:text-white mt-6 mb-3 pb-2 border-b border-slate-200 dark:border-slate-700;
+  }
+  .markdown h3 {
+    @apply text-lg font-semibold text-brand-700 dark:text-brand-300 mt-5 mb-2;
+  }
+  .markdown p {
+    @apply text-slate-700 dark:text-slate-200 leading-relaxed my-3;
+  }
+  .markdown ul {
+    @apply list-disc list-outside ml-5 my-3 space-y-1.5;
+  }
+  .markdown ol {
+    @apply list-decimal list-outside ml-5 my-3 space-y-1.5;
+  }
+  .markdown li {
+    @apply text-slate-700 dark:text-slate-200 leading-relaxed;
+  }
+  .markdown strong {
+    @apply font-semibold text-slate-900 dark:text-white;
+  }
+  .markdown em {
+    @apply italic text-slate-600 dark:text-slate-300;
+  }
+  .markdown table {
+    @apply w-full my-4 border-collapse rounded-xl overflow-hidden text-sm;
+  }
+  .markdown th {
+    @apply bg-brand-50 dark:bg-slate-800 text-left px-4 py-2.5 font-semibold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700;
+  }
+  .markdown td {
+    @apply px-4 py-2.5 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200;
+  }
+  .markdown tr:nth-child(even) td {
+    @apply bg-slate-50/50 dark:bg-slate-800/30;
+  }
+  .markdown hr {
+    @apply my-6 border-slate-200 dark:border-slate-700;
+  }
+  .markdown blockquote {
+    @apply border-l-4 border-brand-500 pl-4 italic text-slate-600 dark:text-slate-300 my-4;
+  }
+  .markdown code {
+    @apply bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono text-brand-700 dark:text-brand-300;
+  }
+  .markdown a {
+    @apply text-brand-600 dark:text-brand-400 underline hover:text-brand-700;
+  }
+}
