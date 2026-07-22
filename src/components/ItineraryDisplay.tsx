@@ -111,7 +111,7 @@ export default function ItineraryDisplay({ markdown, streaming, input, saved, on
 
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(20);
-      doc.text(`AI Travel Planner — ${input?.destination ?? 'Trip'}`, margin, y);
+      doc.text(`Navique — ${input?.destination ?? 'Trip'}`, margin, y);
       y += 24;
 
       doc.setFont('helvetica', 'normal');

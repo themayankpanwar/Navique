@@ -26,7 +26,7 @@ export default function Navbar() {
             <Compass className="w-5 h-5 text-white" />
           </div>
           <div className="leading-tight">
-            <span className="block font-display font-bold text-slate-900 dark:text-white text-lg">AI Travel</span>
+            <span className="block font-display font-bold text-slate-900 dark:text-white text-lg">Navique</span>
             <span className="block text-[10px] uppercase tracking-[0.2em] text-brand-600 dark:text-brand-400 font-semibold -mt-0.5">Planner</span>
           </div>
         </Link>

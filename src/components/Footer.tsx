@@ -11,7 +11,7 @@ export default function Footer() {
               <Compass className="w-5 h-5 text-white" />
             </div>
             <div className="leading-tight">
-              <span className="block font-display font-bold text-slate-900 dark:text-white text-lg">AI Travel Planner</span>
+              <span className="block font-display font-bold text-slate-900 dark:text-white text-lg">Navique</span>
               <span className="block text-[10px] uppercase tracking-[0.2em] text-brand-600 dark:text-brand-400 font-semibold -mt-0.5">Personalized · Powered by AI</span>
             </div>
           </Link>
@@ -53,7 +53,7 @@ export default function Footer() {
 
       <div className="border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-600 dark:text-slate-300">
-          <p>© {new Date().getFullYear()} AI Travel Planner. Crafted for wanderers.</p>
+          <p>© {new Date().getFullYear()} Navique. Crafted for wanderers.</p>
           <p>Built with React, FastAPI & OpenAI.</p>
         </div>
       </div>
