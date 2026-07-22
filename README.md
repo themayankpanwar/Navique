@@ -265,3 +265,4 @@ live, splitting the markdown into animated day cards and appendix section cards.
 ## License
 
 MIT — built for demonstration. Travel images via [Pexels](https://pexels.com).
+# Navique
