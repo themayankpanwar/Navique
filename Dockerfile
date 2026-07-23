@@ -8,14 +8,14 @@ ARG VITE_API_BASE_URL=/
 ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
 
 # Copy frontend manifests and install deps
-COPY package.json package-lock.json ./
+COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
 
 # Copy the rest of the frontend source and build
-COPY index.html vite.config.ts tsconfig.json tsconfig.app.json tsconfig.node.json ./
-COPY tailwind.config.js postcss.config.js eslint.config.js ./
-COPY src ./src
-COPY public ./public
+COPY frontend/index.html frontend/vite.config.ts frontend/tsconfig.json frontend/tsconfig.app.json frontend/tsconfig.node.json ./
+COPY frontend/tailwind.config.js frontend/postcss.config.js frontend/eslint.config.js ./
+COPY frontend/src ./src
+COPY frontend/public ./public
 RUN npm run build
 
 # ---------- Stage 2: Python backend + static frontend ----------

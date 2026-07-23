@@ -68,11 +68,11 @@ This project ships **two interchangeable backends** that expose the same API:
 
 ```
 .
-├── src/                      # React frontend
-│   ├── components/           # Navbar, Footer, Toast, Skeletons, cards, form
-│   ├── lib/                  # api, supabase client, types, markdown, theme hook
-│   ├── pages/                # Landing, Planner, History
-│   └── App.tsx               # Routing + app shell
+├── frontend/                 # React/Vite application
+│   ├── src/                  # Components, pages, and application code
+│   ├── public/               # Static assets
+│   ├── package.json
+│   └── .env.example
 ├── backend/                  # FastAPI reference backend (Python)
 │   ├── main.py
 │   └── requirements.txt
@@ -81,8 +81,6 @@ This project ships **two interchangeable backends** that expose the same API:
 │       └── travel-planner/   # Deployed edge function (Deno)
 │           └── index.ts
 ├── Dockerfile                # Multi-stage: build frontend, serve via FastAPI
-├── .env.example
-├── package.json
 └── README.md
 ```
 
@@ -100,14 +98,16 @@ This project ships **two interchangeable backends** that expose the same API:
 ### 1. Install frontend dependencies
 
 ```bash
+cd frontend
 npm install
 ```
 
 ### 2. Environment variables
 
-Copy `.env.example` to `.env` and fill in:
+Copy `frontend/.env.example` to `frontend/.env` and fill in:
 
 ```bash
+cd frontend
 cp .env.example .env
 ```
 
@@ -135,6 +135,7 @@ cp .env.example .env
 ### 3. Run the frontend dev server
 
 ```bash
+cd frontend
 npm run dev
 ```
 
@@ -208,11 +209,11 @@ App Runner runs your Dockerfile directly — no extra config files needed.
 
 | Script | Purpose |
 |--------|---------|
-| `npm run dev` | Start the Vite dev server |
-| `npm run build` | Production build to `dist/` |
-| `npm run typecheck` | TypeScript type check |
-| `npm run lint` | ESLint |
-| `npm run preview` | Preview the production build locally |
+| `cd frontend && npm run dev` | Start the Vite dev server |
+| `cd frontend && npm run build` | Production build to `frontend/dist/` |
+| `cd frontend && npm run typecheck` | TypeScript type check |
+| `cd frontend && npm run lint` | ESLint |
+| `cd frontend && npm run preview` | Preview the production build locally |
 
 ---
 
