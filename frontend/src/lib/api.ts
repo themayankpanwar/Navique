@@ -1,6 +1,8 @@
 import axios from 'axios';
 import type { HealthStatus, SavedTrip, TripInput, WeatherData } from './types';
 import { normalizeSupabaseProjectUrl } from './supabaseUrl';
+console.log(import.meta.env);
+console.log(import.meta.env.VITE_API_BASE_URL);
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
