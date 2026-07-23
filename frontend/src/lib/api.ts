@@ -1,21 +1,25 @@
 import axios from 'axios';
 import type { HealthStatus, SavedTrip, TripInput, WeatherData } from './types';
 import { normalizeSupabaseProjectUrl } from './supabaseUrl';
-console.log(import.meta.env);
-console.log(import.meta.env.VITE_API_BASE_URL);
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
-const configuredApiBase = import.meta.env.VITE_API_BASE_URL as string | undefined;
+const configuredApiBase = (import.meta.env.VITE_API_BASE_URL as string | undefined)?.trim();
 const normalizedSupabaseUrl = SUPABASE_URL ? normalizeSupabaseProjectUrl(SUPABASE_URL) : '';
-const BASE = configuredApiBase !== undefined
-  ? configuredApiBase.replace(/\/$/, '')
+const hasConfiguredApiBase = Boolean(configuredApiBase);
+
+// An empty base is valid: it represents the same origin, so requests such as
+// `${BASE}/health` resolve to `/health`. Docker builds use `/` for this mode.
+const BASE = hasConfiguredApiBase
+  ? configuredApiBase === '/'
+    ? ''
+    : configuredApiBase!.replace(/\/$/, '')
   : normalizedSupabaseUrl
     ? `${normalizedSupabaseUrl}/functions/v1/travel-planner`
     : '';
 
 function requireApiBase(): string {
-  if (!BASE) {
+  if (!hasConfiguredApiBase && !normalizedSupabaseUrl) {
     throw new Error('API is not configured. Set VITE_API_BASE_URL or VITE_SUPABASE_URL.');
   }
   return BASE;

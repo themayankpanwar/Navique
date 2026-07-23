@@ -2,10 +2,11 @@
 FROM node:20-alpine AS frontend-build
 WORKDIR /app/frontend
 
-# The container serves the FastAPI endpoints from the same origin. Override
-# this argument when building an image that should target another API.
+# Vite replaces VITE_* values while `npm run build` runs. The production image
+# serves FastAPI and the SPA from one origin, so `/` is the correct default.
+# Override this build argument only when intentionally targeting another API.
 ARG VITE_API_BASE_URL=/
-ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+ENV VITE_API_BASE_URL=${VITE_API_BASE_URL}
 
 # Copy frontend manifests and install deps
 COPY frontend/package.json frontend/package-lock.json ./

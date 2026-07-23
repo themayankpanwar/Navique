@@ -1,0 +1,14 @@
+.git
+.agents
+.bolt
+.env
+frontend/.env
+frontend/.env.*.local
+backend/.env
+frontend/node_modules
+frontend/dist
+backend/__pycache__
+*.py[cod]
+*.db
+*.zip
+README.md
